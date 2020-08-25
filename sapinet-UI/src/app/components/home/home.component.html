@@ -1,1 +1,42 @@
-   
+<div style="text-align: center;">
+    <h1>Medicine List</h1>
+</div>
+<div style="margin-top: 2vh; margin-bottom: 3vh; margin-right: 3vw;">
+
+
+  <div style="text-align:right;margin-right: 8vw;">
+    <button routerLink='/add' mat-raised-button>Add Medicine</button>
+  </div>
+
+</div>
+<mat-card style= "margin-left: 10vw; margin-right: 10vw; margin-top:5vh;" class="mat-elevation-z8">
+    <mat-table [dataSource]="medicineList" matSort>
+        <ng-container matColumnDef="MedicineName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header="MedicineName">Medicine Name</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.medname}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Brand">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Brand Name</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.brand}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Quantity">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.quantity}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Price">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.price}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="ExpiryTime">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Expiry Time</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.expirytime | date: 'mediumDate' }} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Notes">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Notes</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.notes}}</mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayColumn"></mat-header-row>
+        <mat-row *matRowDef="let row; columns:displayColumn"></mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]" [pageSize]="5"></mat-paginator>
+</mat-card>   

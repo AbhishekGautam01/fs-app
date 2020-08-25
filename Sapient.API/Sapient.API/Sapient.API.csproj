@@ -10,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Infrastructure.Models.Common\Infrastructure.Models.Common.csproj" />
     <ProjectReference Include="..\Infrastructure.SQLRepository\Infrastructure.SQLRepository.csproj" />
     <ProjectReference Include="..\Sapient.Repository\Sapient.Repository.csproj" />
     <ProjectReference Include="..\Sapient.Services\Sapient.Services.csproj" />
