@@ -1,0 +1,101 @@
+<div style="text-align:left; margin-left: 2vw;margin-top: 2vh;">
+    <i><span routerLink='../home' class="material-icons">keyboard_backspace</span></i>
+  </div>
+
+  <div class="main-div">
+    <mat-card class="mat-elevation-z12">
+        <mat-card-header>
+            <mat-card-title>Add Medicine</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>  
+            <form [formGroup]="addMedicine"  #newMedicineDetail="ngForm" (ngSubmit)="CreateMedcine(newMedicineDetail)">
+
+                
+          <mat-form-field style="width:18vw;margin-right: 2vw;" appearance="outline">
+            <mat-label>Enter Medicine Name</mat-label>
+            <input matInput type="text" formControlName="medname" required>
+            <mat-error>
+              <div *ngIf="addMedicine.controls['medname']?.invalid && addMedicine.controls['medname']?.touched">
+                <div *ngIf="addMedicine.controls['medname']?.errors.required">
+                  Medicine Can't be empty
+                </div>
+                <div *ngIf="addMedicine.controls['medname']?.errors.pattern">
+                   Enter valid Medicine Name
+                </div>
+              </div>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field style="width:18vw;margin-right: 2vw;" appearance="outline">
+            <mat-label>Enter Brand Name</mat-label>
+            <input matInput type="text" formControlName="brand" required>
+            <mat-error>
+              <div *ngIf="addMedicine.controls['brand']?.invalid && addMedicine.controls['brand']?.touched">
+                <div *ngIf="addMedicine.controls['brand']?.errors.required">
+                  Brand Can't be empty
+                </div>
+                <div *ngIf="addMedicine.controls['brand']?.errors.pattern">
+                   Enter valid Brand Name
+                </div>
+              </div>
+            </mat-error>
+          </mat-form-field>
+          <br>
+
+          <mat-form-field style="width:18vw;margin-right: 2vw;" appearance="outline">
+            <mat-label>Enter Quantity</mat-label>
+            <input matInput type="number" formControlName="quantity" required>
+            <mat-error>
+              <div *ngIf="addMedicine.controls['quantity']?.invalid && addMedicine.controls['quantity']?.touched">
+                <div *ngIf="addMedicine.controls['quantity']?.errors.required">
+                  Quantity Can't be empty
+                </div>
+              </div>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field style="width:18vw;margin-right: 2vw;" appearance="outline">
+            <mat-label>Enter Price</mat-label>
+            <input matInput type="number" formControlName="price" required>
+            <mat-error>
+              <div *ngIf="addMedicine.controls['price']?.invalid && addMedicine.controls['price']?.touched">
+                <div *ngIf="addMedicine.controls['price']?.errors.required">
+                  Price Can't be empty
+                </div>
+              </div>
+            </mat-error>
+          </mat-form-field>
+
+          <br>
+
+          <mat-form-field style="width: 18vw;margin-right: 2vw;"  appearance="outline">
+            <mat-label>Choose an Expiry Date</mat-label>
+            <input matInput formControlName="expirytime" [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field style="width:18vw;margin-right: 2vw;" appearance="outline">
+            <mat-label>Enter Notes</mat-label>
+            <input matInput type="text" formControlName="notes" required>
+            <mat-error>
+              <div *ngIf="addMedicine.controls['notes']?.invalid && addMedicine.controls['notes']?.touched">
+                <div *ngIf="addMedicine.controls['notes']?.errors.required">
+                  Notes Can't be empty
+                </div>
+              </div>
+            </mat-error>
+          </mat-form-field>
+
+          <div *ngIf="submitButtonVisibility">
+            <button type="submit" color="primary" [disabled]="addMedicine.invalid" mat-raised-button>Add Medicine</button>
+          </div>
+          <div *ngIf="!submitButtonVisibility">
+            <mat-spinner></mat-spinner>
+          </div>
+            </form>
+
+        </mat-card-content>
+
+    </mat-card>
+  </div>
